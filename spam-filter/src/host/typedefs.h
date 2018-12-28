@@ -24,7 +24,7 @@ const int DATA_SET_SIZE = NUM_FEATURES * NUM_SAMPLES;
   #include <string>
   // target device
   // change here to map to a different device
-  const std::string TARGET_DEVICE = "xilinx:aws-vu9p-f1:4ddr-xpr-2pr:4.0";
+  const std::string TARGET_DEVICE = "xilinx_aws-vu9p-f1-04261818_dynamic_5_0";
 #endif
 
 // parameters

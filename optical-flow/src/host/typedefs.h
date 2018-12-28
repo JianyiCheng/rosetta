@@ -12,30 +12,18 @@
 const int MAX_HEIGHT = 436;
 const int MAX_WIDTH = 1024;
 
-#define SDSOC
-
 // basic typedefs
-#ifdef SDSOC
+#ifndef SW
 	#include "ap_fixed.h"
 	typedef ap_fixed<17,9> input_t;
 	typedef ap_fixed<32,13> pixel_t;
-	typedef ap_fixed<48,27> outer_pixel_t;
-	typedef ap_fixed<96,56> calc_pixel_t;
+	typedef ap_fixed<32,27> outer_pixel_t;
+	typedef ap_fixed<64,56> calc_pixel_t;
 	typedef ap_fixed<32,13> vel_pixel_t;
-	//typedef ap_fixed<16,8> input_t;
-        //typedef ap_fixed<32,13> pixel_t;
-        //typedef float outer_pixel_t;
-	//typedef float calc_pixel_t;
-	//typedef float vel_pixel_t;
-	
-#endif
-#ifdef OCL
-	#include "ap_fixed.h"
-	typedef ap_fixed<48,40> pixel_t;
-#endif
-#ifdef SW
+#else
 	typedef float pixel_t;
 #endif
+
 typedef struct{
 	pixel_t x;
 	pixel_t y;
@@ -64,7 +52,7 @@ typedef struct{
 #ifdef OCL
   #include <string>
   // change the target device here
-  const std::string TARGET_DEVICE = "xilinx:aws-vu9p-f1:4ddr-xpr-2pr:4.0";
+  const std::string TARGET_DEVICE = "xilinx_aws-vu9p-f1-04261818_dynamic_5_0";
 #endif
 
 #endif

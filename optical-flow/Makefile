@@ -8,8 +8,8 @@ HOST_SRC_H   = ./src/host/utils.h ./src/host/check_result.h ./src/host/typedefs.
 DATA         = 
 
 # Set host code include paths
-HOST_INC = -I$(XILINX_SDX)/Vivado_HLS/include -I./imageLib
-HOST_LIB =  -L$(XILINX_SDX)/Vivado_HLS/lib
+HOST_INC = -I$(XILINX_VIVADO)/include -I./imageLib
+HOST_LIB =  -L$(XILINX_VIVADO)/lib
 
 # Set kernel file
 OCL_KERNEL_SRC = ./src/ocl/optical_flow.cpp

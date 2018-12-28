@@ -77,6 +77,8 @@ OCL_HOST_EXE        = $(KERNEL_NAME)_host.exe
 
 # Kernel XCLBIN file
 XCLBIN        = $(KERNEL_NAME).$(OCL_TARGET).xclbin
+# Kernel XO file
+XO            = $(KERNEL_NAME).$(OCL_TARGET).xo
 
 # =============================================== SDSoC Platform and Target Settings ============================================== #
 
@@ -123,8 +125,12 @@ $(OCL_HOST_EXE): $(HOST_SRC_CPP) $(HOST_SRC_H) $(OCL_HARNESS_SRC_CPP) $(OCL_HARN
 	$(OCL_CXX) $(OCL_HOST_FLAGS) -o $@ $(HOST_SRC_CPP) $(OCL_HARNESS_SRC_CPP) 
 
 # ocl secondary rule: xclbin 
-$(XCLBIN): $(OCL_KERNEL_SRC) $(OCL_KERNEL_H)
-	$(XOCC) $(XCLBIN_FLAGS) -o $@ $(OCL_KERNEL_SRC)
+$(XCLBIN): $(XO)
+	$(XOCC) -l $(XCLBIN_FLAGS) -o $@ $(XO)
+
+# ocl secondary rule: the .xo file
+$(XO): $(OCL_KERNEL_SRC) $(OCL_KERNEL_H)
+	$(XOCC) -c $(XCLBIN_FLAGS) -o $@ $(OCL_KERNEL_SRC)
 
 # sdsoc rules
 sdsoc: $(SDSOC_EXE)
@@ -154,7 +160,10 @@ clean:
 	rm -rf _sds
 	rm -rf sd_card
 	rm -rf .Xil
+	rm -rf _x
+	rm -rf *.log
 	rm -rf ./src/host/*.d
 	rm -rf ./src/sdsoc/*.o
 	rm -rf ./src/sdsoc/*.d
 	rm -rf ./src/host/*.o
+	rm awsver.txt

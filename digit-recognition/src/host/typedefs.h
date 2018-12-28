@@ -10,10 +10,14 @@
 #define __TYPEDEFS_H__
 
 // dataset information
-const int NUM_TRAINING  = 18000;
-const int CLASS_SIZE    = 1800;
-const int NUM_TEST      = 2000;
-const int DIGIT_WIDTH   = 4;
+// const int NUM_TRAINING  = 18000;
+// const int CLASS_SIZE    = 1800;
+// const int NUM_TEST      = 2000;
+// const int DIGIT_WIDTH   = 4;
+#define NUM_TRAINING 18000
+#define CLASS_SIZE   1800
+#define NUM_TEST     2000
+#define DIGIT_WIDTH  4
 
 // typedefs
 typedef unsigned long long DigitType;
