@@ -153,6 +153,7 @@ clean:
 	rm -rf *.exe
 	rm -rf *.elf
 	rm -rf *.xclbin
+	rm -rf *.xo
 	rm -rf *.bit
 	rm -rf *.rpt
 	rm -rf system_estimate.xtxt
